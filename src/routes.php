@@ -1,16 +1,7 @@
 <?php
 
-Route::prefix('painel')->group( function () {
-    Route::resource('roles','\Infoalto\Admin\Controllers\RoleController');
-    Route::resource('permission', '\Infoalto\Admin\Controllers\PermissionController');
-    Route::resource('user', '\Infoalto\Admin\Controllers\UserController');
-    Route::get('teste', '\Infoalto\Admin\Controllers\UserController@teste');
-});
-
-
-
-//AUTH ROUTES
 Route::middleware(['web'])->group( function () {
+    //AUTH ROUTES
     Route::get('login', '\App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
     Route::post('login', '\App\Http\Controllers\Auth\LoginController@login');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
@@ -18,5 +9,13 @@ Route::middleware(['web'])->group( function () {
     Route::get('password/reset', '\App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
     Route::post('password/reset', '\App\Http\Controllers\Auth\ResetPasswordController@reset')->name('password.update');
     Route::get('password/reset/{token}', '\App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');
+
+    //PAINEL ROUTES
+    Route::prefix('painel')->group( function () {
+        Route::get('/', '\Infoalto\Admin\Controllers\PainelController@index')->name('painel');
+        Route::resource('roles','\Infoalto\Admin\Controllers\RoleController');
+        Route::resource('permission', '\Infoalto\Admin\Controllers\PermissionController');
+        Route::resource('user', '\Infoalto\Admin\Controllers\UserController');
+    });
 });
 

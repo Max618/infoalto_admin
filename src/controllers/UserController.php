@@ -105,8 +105,4 @@ class UserController extends Controller
             return redirect()->route('user.index')->with('error',$error->getMessage());
         }
     }
-
-    public function teste(){
-        dd(Auth::user());
-    }
 }
