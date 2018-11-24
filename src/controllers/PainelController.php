@@ -24,7 +24,6 @@ class PainelController extends Controller
      */
     public function index()
     {
-        dd("EOQ");
-        return view('admin.home');
+        return view('admin.painel');
     }
 }
