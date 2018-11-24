@@ -2,9 +2,12 @@
 
 ## Comandos
 
-<p>Gerar Views: </p>
+<p>Gerar Views:
 <code>php artisan vendor:publish --tag=views</code>
-<p>Gerar CSS e JS do template: </p>
+</p>
+<p>Gerar CSS e JS do template: 
 <code>php artisan vendor:publish --tag=public</code>
-<p>Gerar Controllers: </p>
+</p>
+<p>Gerar Controllers: 
 <code>php artisan vendor:publish --tag=controller</code>
+</p>
