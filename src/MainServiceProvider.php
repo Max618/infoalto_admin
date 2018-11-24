@@ -14,7 +14,7 @@ class MainServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/routes.php');
-        $this->loadMigrationsFrom(__DIR__.'/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadViewsFrom(__DIR__.'/views', 'admin');
 
         //VIEWS PUBLISH
@@ -31,6 +31,10 @@ class MainServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/public' => base_path('public/admin/'),
         ],'public');
+        //SEEDS PUBLISH
+        $this->publishes([
+            __DIR__.'/database/seeds' => base_path('database/seeds/'),
+        ],'seeds');
     }
 
     /**

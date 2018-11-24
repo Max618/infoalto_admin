@@ -11,4 +11,7 @@ class Role extends Model
     public function permissions(){
         return $this->belongsToMany('Infoalto\Admin\Permission');
     }
+    public function users(){
+        return $this->belongsToMany('App\User');
+    }
 }

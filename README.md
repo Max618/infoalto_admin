@@ -11,3 +11,12 @@
 <p>Gerar Controllers: 
 <code>php artisan vendor:publish --tag=controller</code>
 </p>
+<p>Gerar Seeds: 
+<code>php artisan vendor:publish --tag=seeds</code>
+<code>
+    UsersTableSeeder::class,
+    RolesTableSeeder::class,
+    PermissionsTableSeeder::class
+</code>
+<code>composer dump-autoload</code>
+</p>
