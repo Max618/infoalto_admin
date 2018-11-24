@@ -1,0 +1,12 @@
+{
+    "name": "infoalto/admin",
+    "description": "Este é um pacote de admin criado para a infoalto",
+    "authors": [
+        {
+            "name": "Gabriel Santos",
+            "email": "gabmaxsan@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
