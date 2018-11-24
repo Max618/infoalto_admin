@@ -49,4 +49,12 @@ class User extends Authenticatable
 
         return $this->roles()->get()->contains("id",$roles->id);
     }
+
+    public function getRoleFormatedAttribute(){
+        $newRoles = "";
+        foreach($this->roles as $role){
+            $newRoles .= ucfirst($role->name)." ,";
+        }
+        return substr($newRoles,0,-1);
+    }
 }
