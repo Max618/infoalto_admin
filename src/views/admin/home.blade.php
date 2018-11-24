@@ -1,5 +1,5 @@
 @extends('layout.dashboard')
 
 @section('content')
-<p>PAINEL</p>
+<p>HOME</p>
 @endsection

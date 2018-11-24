@@ -10,14 +10,15 @@
                 <div class="logo text-center"><img src="{{ asset('admin/img/logo-dark.png') }}" alt="Klorofil Logo"></div>
                 <p class="lead">Login to your account</p>
             </div>
-            <form class="form-auth-small" action="index.php">
+            <form class="form-auth-small" method="POST" action="{{ route('login') }}">
+            @csrf
                 <div class="form-group">
                     <label for="signin-email" class="control-label sr-only">Email</label>
-                    <input type="email" class="form-control" id="signin-email" value="samuel.gold@domain.com" placeholder="Email">
+                    <input type="email" class="form-control" id="signin-email" name="email" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <label for="signin-password" class="control-label sr-only">Password</label>
-                    <input type="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password">
+                    <input type="password" class="form-control" id="signin-password" name="password" placeholder="Password">
                 </div>
                 <div class="form-group clearfix">
                     <label class="fancy-checkbox element-left">

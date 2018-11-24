@@ -20,3 +20,6 @@
 </code>
 <code>composer dump-autoload</code>
 </p>
+<p>Mudar rotas de redirectTo para <code>/painel</code> e inserir <code> 
+Route::get('/painel', '\Infoalto\Admin\Controllers\PainelController@index')->name('painel');
+</code> em routes/web.php</p>
