@@ -3,6 +3,8 @@
 Route::prefix('painel')->group( function () {
     Route::resource('roles','\Infoalto\Admin\Controllers\RoleController');
     Route::resource('permission', '\Infoalto\Admin\Controllers\PermissionController');
+    Route::resource('user', '\Infoalto\Admin\Controllers\UserController');
+    Route::get('teste', '\Infoalto\Admin\Controllers\UserController@teste');
 });
 
 
@@ -17,3 +19,4 @@ Route::middleware(['web'])->group( function () {
     Route::post('password/reset', '\App\Http\Controllers\Auth\ResetPasswordController@reset')->name('password.update');
     Route::get('password/reset/{token}', '\App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');
 });
+

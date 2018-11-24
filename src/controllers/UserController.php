@@ -2,9 +2,10 @@
 
 namespace Infoalto\Admin\Controllers;
 
-use App\User;
+use Infoalto\Admin\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -103,5 +104,9 @@ class UserController extends Controller
         }catch(Exception $error){
             return redirect()->route('user.index')->with('error',$error->getMessage());
         }
+    }
+
+    public function teste(){
+        dd(Auth::user());
     }
 }

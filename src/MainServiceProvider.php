@@ -27,6 +27,10 @@ class MainServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/controllers' => base_path('app/Http/Controllers/'),
         ],'controllers');
+        //MODELS PUBLISH
+        $this->publishes([
+            __DIR__.'/models' => base_path('app/'),
+        ],'models');
         //PUBLIC PUBLISH
         $this->publishes([
             __DIR__.'/public' => base_path('public/admin/'),
@@ -35,6 +39,10 @@ class MainServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/database/seeds' => base_path('database/seeds/'),
         ],'seeds');
+        //AUTHSERVICEPROVIDER PUBLISH
+        $this->publishes([
+            __DIR__.'/AuthServiceProvider.php' => base_path('app/Providers/AuthServiceProvider.php'),
+        ],'acl');
     }
 
     /**
