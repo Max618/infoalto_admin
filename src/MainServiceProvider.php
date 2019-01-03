@@ -15,21 +15,21 @@ class MainServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
-        $this->loadViewsFrom(__DIR__.'/views', 'admin');
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'admin');
 
         //VIEWS PUBLISH
         $this->publishes([
-            __DIR__.'/views/admin' => base_path('resources/views/admin/'),
-            __DIR__.'/views/auth' => base_path('resources/views/auth/'),
-            __DIR__.'/views/layout' => base_path('resources/views/layout/'),
+            __DIR__.'/resources/views/admin' => base_path('resources/views/admin/'),
+            __DIR__.'/resources/views/auth' => base_path('resources/views/auth/'),
+            __DIR__.'/resources/views/layout' => base_path('resources/views/layout/'),
         ],'views');
         //CONTROLLERS PUBLISH
         $this->publishes([
-            __DIR__.'/controllers' => base_path('app/Http/Controllers/'),
+            __DIR__.'/app/controllers' => base_path('app/Http/Controllers/'),
         ],'controllers');
         //MODELS PUBLISH
         $this->publishes([
-            __DIR__.'/models' => base_path('app/'),
+            __DIR__.'/app' => base_path('app/'),
         ],'models');
         //ASSETS PUBLISH
         $this->publishes([
