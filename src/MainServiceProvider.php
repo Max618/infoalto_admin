@@ -31,10 +31,10 @@ class MainServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/models' => base_path('app/'),
         ],'models');
-        //PUBLIC PUBLISH
+        //ASSETS PUBLISH
         $this->publishes([
-            __DIR__.'/public' => base_path('public/admin/'),
-        ],'public');
+            __DIR__.'/public' => base_path('assets/admin/'),
+        ],'assets');
         //SEEDS PUBLISH
         $this->publishes([
             __DIR__.'/database/seeds' => base_path('database/seeds/'),
