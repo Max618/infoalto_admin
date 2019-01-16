@@ -71,6 +71,6 @@ class MainServiceProvider extends ServiceProvider
     {
         //$this->app->make('infoalto\admin\controllers\UserController');
         //$this->app->make('infoalto\admin\PermissionController');
-        //$this->app->make('infoalto\admin\RoleController');
+        $this->app->make('Infoalto\Admin\Requests\UserRequest');
     }
 }
