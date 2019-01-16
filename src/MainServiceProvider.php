@@ -3,16 +3,23 @@
 namespace Infoalto\Admin;
 
 use Illuminate\Support\ServiceProvider;
+use Collective\Html\HtmlServiceProvider;
+use Illuminate\Foundation\AliasLoader;
 
 class MainServiceProvider extends ServiceProvider
 {
-    /**
+    /** 
      * Bootstrap services.
      *
      * @return void
      */
     public function boot()
     {
+
+        $this->app->register(HtmlServiceProvider::class);
+        AliasLoader::getInstance(['Form'=>'\Collective\Html\FormFacade', "Html"=>'\Collective\Html\FormFacade']);
+
+
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
         $this->loadViewsFrom(__DIR__.'/resources/views', 'admin');
@@ -62,7 +69,8 @@ class MainServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //$this->app->make('Infoalto\Admin\PermissionController');
-        //$this->app->make('Infoalto\Admin\RoleController');
+        //$this->app->make('infoalto\admin\controllers\UserController');
+        //$this->app->make('infoalto\admin\PermissionController');
+        //$this->app->make('infoalto\admin\RoleController');
     }
 }

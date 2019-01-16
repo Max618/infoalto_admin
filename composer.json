@@ -8,5 +8,20 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "illuminate/support": "5.7.*",
+        "laravelcollective/html": "5.7.*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "infoalto\\admin\\MainServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Infoalto\\Admin\\": "src/"
+        }
+    }
 }
