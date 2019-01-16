@@ -1,7 +1,14 @@
 # Pacote Admin - InfoAlto
 
+## Instalar
+<p>Adicionar <code>"Infoalto\\Admin\\": "packages/infoalto/admin/src"</code> em autoload->psr-4 em composer.json</p>
+<p>Adicionar <code>Infoalto\Admin\MainServiceProvider::class,</code> em providers em config/app.php</p>
+
 ## Comandos
 
+<p>Gerar Arquivos base:
+<code>php artisan vendor:publish --tag=admin</code>
+</p>
 <p>Gerar Views:
 <code>php artisan vendor:publish --tag=views</code>
 </p>
