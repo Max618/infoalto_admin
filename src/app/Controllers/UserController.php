@@ -3,9 +3,11 @@
 namespace Infoalto\Admin\Controllers;
 
 use Infoalto\Admin\User;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use Infoalto\Admin\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class UserController extends Controller
 {
@@ -21,7 +23,10 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return View("admin.user.index",['users' => $users]);
+        if(View::exists("admin.user.index"))
+            return View("admin.user.index",['users' => $users]);
+
+        return View("admin::admin.user.index",['users' => $users]);
     }
 
     /**
@@ -31,7 +36,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return View("admin.users.create");
+        if(View::exists("admin.user.create"))
+            return View("admin.user.create");
+
+        return View("admin::admin.user.create");
     }
 
     /**
@@ -40,7 +48,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         try{
             User::create($request->only('name','email','password'));
@@ -58,7 +66,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return View("admin.user.show",['user' => $user]);
+        if(View::exists("admin.user.show"))
+            return View("admin.user.show", ['user' => $user]);
+
+        return View("admin::admin.user.show",['user' => $user]);
     }
 
     /**
@@ -69,7 +80,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return View("admin.user.edit",['user' => $user]);
+        if(View::exists("admin.user.edit"))
+            return View("admin.user.edit", ['user' => $user]);
+        
+        return View("admin::admin.user.edit",['user' => $user]);
     }
 
     /**
@@ -79,7 +93,7 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
         try{
             $user->fill($request->only('name','email'));

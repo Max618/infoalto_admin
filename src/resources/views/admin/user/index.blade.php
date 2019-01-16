@@ -33,8 +33,8 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->role_formated }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-warning">Editar</a>
-                                    <a href="#" class="btn btn-danger">Excluir</a>
+                                    <a href="{{ route('user.edit', $user) }}" class="btn btn-warning">Editar</a>
+                                    <a href="{{ route('user.destroy', $user) }}" class="btn btn-danger">Excluir</a>
                                 </td>
                             </tr>
                         @empty
