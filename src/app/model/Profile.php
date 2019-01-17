@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    protected $fillable = ['birhday','phone', 'cpf', 'rg', 'about', 'user_id'];
+    protected $fillable = ['birthday','phone', 'cpf', 'rg', 'about', 'user_id'];
 
     protected $casts = [
-        'birhday' => 'date:Y-m-d'
+        'birthday' => 'date:Y-m-d'
     ];
 
     public function user(){
