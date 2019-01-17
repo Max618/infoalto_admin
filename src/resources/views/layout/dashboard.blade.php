@@ -41,6 +41,25 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
+					@if(Session::has('success'))
+						@component('layout.messages',["type" => "success"])
+							{{ Session::get('success') }}
+						@endcomponent
+					@elseif(Session::has('error'))
+						@component('layout.messages',["type" => "error"])
+						{{ Session::get('error') }}
+						@endcomponent
+					@elseif(Session::has('info'))
+						@component('layout.messages',["type" => "info"])
+						{{ Session::get('info') }}
+						@endcomponent
+					@elseif(Session::has('warning'))
+						@component('layout.messages',["type" => "warning"])
+						{{ Session::get('warning') }}
+						@endcomponent
+					@endif
+
+
 					@if($errors->any())
 						@foreach($errors->all() as $error)
 							<div class="alert alert-danger alert-dismissible" role="alert">
@@ -49,6 +68,8 @@
 							</div>
 						@endforeach
 					@endif
+
+
                     @yield('content')
                 </div>
             </div>
