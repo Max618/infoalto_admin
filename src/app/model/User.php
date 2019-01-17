@@ -57,4 +57,8 @@ class User extends Authenticatable
         }
         return substr($newRoles,0,-1);
     }
+
+    public function profile(){
+        return $this->hasOne("Infoalto\Admin\Profile");
+    }
 }
