@@ -3,7 +3,7 @@
 namespace Infoalto\Admin\Controllers;
 
 use Infoalto\Admin\Profile;
-use Illuminate\Http\Request;
+use Infoalto\Admin\Requests\ProfileCreateRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 
@@ -36,5 +36,13 @@ class ProfileController extends Controller
             return View("admin.profile.create");
 
         return View("admin::admin.profile.create");
+    }
+    public function store(ProfileCreateRequest $request) {
+        try{
+            auth()->user()->profile()->create($request->only('birthday','phone','about'));
+            return redirect()->route("profile.index")->with("success","Informações atualizado com sucesso!");
+        } catch(Exception $error){
+            return redirect()->route("profile.index")->with("error",$error->getMessage());
+        }
     }
 }
