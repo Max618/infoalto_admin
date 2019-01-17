@@ -4,6 +4,7 @@
 <style>
     .profile-header .profile-main {
         background-image: url("{{ asset('admin/img/profile-bg.png') }}");
+        background-size: 1050px 225px;
     }
 </style>
 @endsection
