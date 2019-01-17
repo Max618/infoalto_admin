@@ -20,8 +20,8 @@ class CreateImagesTable extends Migration
             $table->float("height")->nullable();
             $table->float("width")->nullable();
             $table->string("title");
-            $table->string("image_type");
-            $table->integer("image_id");
+            $table->string("imageable_type");
+            $table->integer("imageable_id");
             $table->timestamps();
         });
     }

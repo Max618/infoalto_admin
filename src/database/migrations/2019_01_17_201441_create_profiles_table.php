@@ -20,6 +20,7 @@ class CreateProfilesTable extends Migration
             $table->number("cpf",11)->nullable();
             $table->string("rg",9)->nullable();
             $table->text("about")->nullable();
+            $table->integer("user_id");
             $table->timestamps();
         });
     }
