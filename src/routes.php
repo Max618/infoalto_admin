@@ -13,7 +13,7 @@ Route::middleware(['web'])->group( function () {
     //PAINEL ROUTES
     Route::prefix('painel')->group( function () {
         Route::get('/', '\Infoalto\Admin\Controllers\PainelController@index')->name('painel');
-        Route::resource('roles','\Infoalto\Admin\Controllers\RoleController');
+        Route::resource('role','\Infoalto\Admin\Controllers\RoleController');
         Route::resource('permission', '\Infoalto\Admin\Controllers\PermissionController');
         Route::resource('user', '\Infoalto\Admin\Controllers\UserController');
     });
