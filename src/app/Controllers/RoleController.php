@@ -20,7 +20,10 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return View("admin.role.index",['roles' => $roles]);
+        if(View::exists("admin.role.index"))
+            return View("admin.role.index",['roles' => $roles]);
+
+        return View("admin::admin.role.index",['roles' => $roles]);
     }
 
     /**
@@ -30,7 +33,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return View("admin.role.create");
+        if(View::exists("admin.role.create"))
+            return View("admin.role.create");
+
+        return View("admin::admin.role.create");
     }
 
     /**
@@ -57,7 +63,10 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        return View("admin.role.show",["role" => $role]);
+        if(View::exists("admin.role.show"))
+            return View("admin.role.show",["role" => $role]);
+        
+        return View("admin::admin.role.show",["role" => $role]);
     }
 
     /**
@@ -68,7 +77,10 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return View("admin.role.edit",["role" => $role]);
+        if(View::exists("admin.role.edit"))
+            return View("admin.role.edit",["role" => $role]);
+
+        return View("admin::admin.role.edit",["role" => $role]);
     }
 
     /**
