@@ -24,4 +24,11 @@ class Role extends Model
     private function stringToArray($string){
         return explode("/",$string);
     }
+    public function getPermissionsAttribute(){
+        $permissions = $this->permissions()->get()->map(function ($permission) {
+            return $permission->name;
+        })->toArray();
+        $permissions_string = implode("/",$permissions);
+        return $permissions_string;
+    }
 }
