@@ -24,6 +24,8 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('view_user');
+
         $users = User::all();
         if(View::exists("admin.user.index"))
             return View("admin.user.index",['users' => $users]);
@@ -38,6 +40,8 @@ class UserController extends Controller
      */
     public function create()
     {
+        $this->authorize('create_user');
+
         $roles = Role::all()->pluck('name','id');
         
         if(View::exists("admin.user.create"))
@@ -54,6 +58,8 @@ class UserController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
+        $this->authorize('create_user');
+
         try{
             $user = User::create($request->only('name','email','password'));
             $user->roles()->attach($request->get("role_id"));
@@ -72,6 +78,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $this->authorize('view_user');
+
         if(View::exists("admin.user.show"))
             return View("admin.user.show", ['user' => $user]);
 
@@ -86,6 +94,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('edit_user');
+
         $roles = Role::all()->pluck('name','id');
 
         if(View::exists("admin.user.edit"))
@@ -103,6 +113,8 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, User $user)
     {
+        $this->authorize('edit_user');
+
         try{
             $user->fill($request->only('name','email'));
             $user->roles()->sync($request->only("role_id"));
@@ -121,6 +133,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $this->authorize('delete_user');
+
         try{
             $user->delete();
             return redirect()->route('user.index')->with('success','Usuário deletado com sucesso!');
