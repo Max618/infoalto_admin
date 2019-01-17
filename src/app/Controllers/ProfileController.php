@@ -22,10 +22,19 @@ class ProfileController extends Controller
     public function index()
     {
         $profile = auth()->user()->profile;
+        if(empty($profile))
+            return redirect()->route("profile.create");
 
         if(View::exists("admin.profile.index"))
             return View("admin.profile.index",['profile' => $profile]);
 
         return View("admin::admin.profile.index",['profile' => $profile]);
+    }
+    
+    public function create(){
+        if(View::exists("admin.profile.create"))
+            return View("admin.profile.create");
+
+        return View("admin::admin.profile.create");
     }
 }
