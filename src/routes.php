@@ -17,6 +17,7 @@ Route::middleware(['web'])->group( function () {
         Route::resource('permission', '\Infoalto\Admin\Controllers\PermissionController');
         Route::resource('user', '\Infoalto\Admin\Controllers\UserController');
         Route::get("/me","\Infoalto\Admin\Controllers\ProfileController@index")->name("profile.index");
+        Route::get("/me/create","\Infoalto\Admin\Controllers\ProfileController@create")->name("profile.create");
     });
 });
 
