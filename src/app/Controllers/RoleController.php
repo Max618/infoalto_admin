@@ -22,6 +22,8 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $this->authorize('view_role');
+
         $roles = Role::all();
         if(View::exists("admin.role.index"))
             return View("admin.role.index",['roles' => $roles]);
@@ -36,6 +38,8 @@ class RoleController extends Controller
      */
     public function create()
     {
+        $this->authorize('create_role');
+
         if(View::exists("admin.role.create"))
             return View("admin.role.create");
 
@@ -50,6 +54,8 @@ class RoleController extends Controller
      */
     public function store(RoleCreateRequest $request)
     {
+        $this->authorize('create_role');
+
         try{
             $role = Role::create($request->only('name','description'));
 
@@ -70,6 +76,8 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
+        $this->authorize('view_role');
+
         if(View::exists("admin.role.show"))
             return View("admin.role.show",["role" => $role]);
         
@@ -84,6 +92,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        $this->authorize('edit_role');
+
         if(View::exists("admin.role.edit"))
             return View("admin.role.edit",["role" => $role]);
 
@@ -99,6 +109,8 @@ class RoleController extends Controller
      */
     public function update(RoleUpdateRequest $request, Role $role)
     {
+        $this->authorize('edit_role');
+
         try{
             $role->fill($request->only('name','description'));
             $role->permissions()->detach();
@@ -118,6 +130,8 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        $this->authorize('delete_role');
+
         try{
             $role->delete();
             return redirect()->route('role.index')->with('success','Função deletada com sucesso!');
