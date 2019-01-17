@@ -97,10 +97,12 @@ class RoleController extends Controller
      * @param  \App\Role  $Role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(RoleUpdateRequest $request, Role $role)
     {
         try{
             $role->fill($request->only('name','description'));
+            $role->permissions()->detach();
+            $role->attach_permissions($request->get('permissions'));
             $role->save();
             return redirect()->route("role.index")->with("success","Função atualizada com sucesso!");
         } catch(Exception $error){
