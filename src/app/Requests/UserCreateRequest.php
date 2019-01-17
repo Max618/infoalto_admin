@@ -35,12 +35,12 @@ class UserCreateRequest extends FormRequest
     public function messages(){
         return [
             "name.required" => "O campo é nome é obrigatório",
-            "name.max" => "O campo nome passou do limite máximo de caractéres",
+            "name.max" => "O campo nome passou do limite máximo de caracteres",
             "email.required" => "O campo é e-mail é obrigatório",
             "email.unique" => "O valor do e-mail já existe",
-            "email.max" => "O campo e-mail passou do limite máximo de caractéres",
+            "email.max" => "O campo e-mail passou do limite máximo de caracteres",
             "password.required" => "O campo senha é obrigatório",
-            "password.max" => "O campo senha passou do limite máximo de caractéres",
+            "password.max" => "O campo senha passou do limite máximo de caracteres",
             "role_id.required" => "O campo função é ogrigatório",
         ];
     }
