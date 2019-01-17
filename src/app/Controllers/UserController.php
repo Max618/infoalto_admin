@@ -3,6 +3,7 @@
 namespace Infoalto\Admin\Controllers;
 
 use Infoalto\Admin\User;
+use Infoalto\Admin\Role;
 //use Illuminate\Http\Request;
 use Infoalto\Admin\Requests\UserRequest;
 use App\Http\Controllers\Controller;
@@ -36,10 +37,12 @@ class UserController extends Controller
      */
     public function create()
     {
+        $roles = Role::all()->pluck('name','id');
+        
         if(View::exists("admin.user.create"))
-            return View("admin.user.create");
+            return View("admin.user.create",["roles" => $roles]);
 
-        return View("admin::admin.user.create");
+        return View("admin::admin.user.create",["roles" => $roles]);
     }
 
     /**
