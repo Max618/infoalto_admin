@@ -5,7 +5,8 @@ namespace Infoalto\Admin\Controllers;
 use Infoalto\Admin\User;
 use Infoalto\Admin\Role;
 //use Illuminate\Http\Request;
-use Infoalto\Admin\Requests\UserRequest;
+use Infoalto\Admin\Requests\UserCreateRequest;
+use Infoalto\Admin\Requests\UserUpdateRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -51,10 +52,12 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(UserCreateRequest $request)
     {
         try{
-            User::create($request->only('name','email','password'));
+            $user = User::create($request->only('name','email','password'));
+            $user->roles()->attach($request->get("role_id"));
+            $user->save();
             return redirect()->route("user.index")->with("success","Usuário criado com sucesso!");
         } catch(Exception $error){
             return redirect()->route("user.index")->with("error",$error->getMessage());
@@ -83,10 +86,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $roles = Role::all()->pluck('name','id');
+
         if(View::exists("admin.user.edit"))
-            return View("admin.user.edit", ['user' => $user]);
+            return View("admin.user.edit", ['user' => $user,"roles" => $roles]);
         
-        return View("admin::admin.user.edit",['user' => $user]);
+        return View("admin::admin.user.edit",['user' => $user,"roles" => $roles]);
     }
 
     /**
@@ -96,7 +101,7 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
         try{
             $user->fill($request->only('name','email'));
