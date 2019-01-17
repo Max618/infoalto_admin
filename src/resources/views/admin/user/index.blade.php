@@ -34,7 +34,11 @@
                                 <td>{{ $user->role_formated }}</td>
                                 <td>
                                     <a href="{{ route('user.edit', $user) }}" class="btn btn-warning">Editar</a>
-                                    <a href="{{ route('user.destroy', $user) }}" class="btn btn-danger">Excluir</a>
+                                <a href="{{ route('user.destroy', $user) }}" onclick="event.preventDefault(); confirm('Deseja excluir o usuário {{$user->name}}?') ? document.getElementById('delete-{{$user->id}}').submit() : ''" class="btn btn-danger">Excluir</a>
+                                 <form id="delete-{{$user->id}}" action="{{ route('user.destroy', $user)  }}" method="POST" style="display: none;">
+                                     @csrf
+                                     @method("DELETE")
+                                 </form>  
                                 </td>
                             </tr>
                         @empty
