@@ -3,6 +3,7 @@
 namespace Infoalto\Admin\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\User;
 
 class UserRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return $this->user()->can('create_user') || $this->user()->can('edit_user');
     }
 
     /**
@@ -24,7 +25,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required|max255",
+            "name" => "required|max:255",
             "email" => "required|unique:users|max:255",
             "password" => "required|max:255"
         ];
