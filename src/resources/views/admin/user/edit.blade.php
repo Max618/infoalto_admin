@@ -12,8 +12,6 @@
                 <br>
                 {!! Form::email("email",null, ["class" => "form-control", "placeholder" => "Digite o E-mail"]) !!}
                 <br>
-                {!! Form::password("password", ["class" => "form-control", "placeholder" => "Digite a Senha"]) !!}
-                <br>
                 {!! Form::select('role_id', $roles, $user->roles[0]->id, ["class" => "form-control", "placeholder" => "Escolha a função"]) !!}
                 <br>
                 <div class="col-md-12 text-center">

@@ -6,6 +6,9 @@
                 @can('create_user')
                 <li><a href="{{ route('user.index') }}" ><i class="lnr lnr-user"></i> <span>Usuários</span></a></li>
                 @endcan
+                @can('create_role')
+                <li><a href="{{ route('role.index') }}" ><i class="lnr lnr-user"></i> <span>Funções</span></a></li>
+                @endcan
                 <li>
                     <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
                     <div id="subPages" class="collapse ">
