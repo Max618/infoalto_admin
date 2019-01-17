@@ -1,0 +1,45 @@
+<?php
+
+namespace Infoalto\Admin\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+use App\User;
+
+class UserCreateRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return $this->user()->can('create_user');
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            "name" => "required|max:255",
+            "email" => "required|unique:users|max:255",
+            "password" => "required|max:255"
+        ];
+    }
+
+    public function messages(){
+        return [
+            "name.required" => "O campo é nome é obrigatório",
+            "name.max" => "O campo nome passou do limite máximo de caractéres",
+            "email.required" => "O campo é e-mail é obrigatório",
+            "email.unique" => "O valor do e-mail já existe",
+            "email.max" => "O campo e-mail passou do limite máximo de caractéres",
+            "password.required" => "O campo senha é obrigatório",
+            "password.max" => "O campo senha passou do limite máximo de caractéres"
+        ];
+    }
+}
