@@ -14,4 +14,14 @@ class Role extends Model
     public function users(){
         return $this->belongsToMany('App\User');
     }
+    public function attach_permissions($permissions_string){
+        $permissions_array = $this->stringToArray($permissions_string);
+        foreach($permissions_array as $permission) {
+            $permission = Permission::firstOrCreate(['name' => $permission]);
+            $this->permissions()->attach($permission->id);
+        }
+    }
+    private function stringToArray($string){
+        return explode("/",$string);
+    }
 }
