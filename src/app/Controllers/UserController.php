@@ -105,6 +105,7 @@ class UserController extends Controller
     {
         try{
             $user->fill($request->only('name','email'));
+            $user->roles()->sync($request->only("role_id"));
             $user->save();
             return redirect()->route("user.index")->with("success","Usuário atualizado com sucesso!");
         } catch(Exception $error){
