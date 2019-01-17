@@ -3,7 +3,9 @@
 namespace Infoalto\Admin\Controllers;
 
 use Infoalto\Admin\Role;
-use Illuminate\Http\Request;
+use Infoalto\Admin\Permission;
+use Infoalto\Admin\Requests\RoleCreateRequest;
+use Infoalto\Admin\Requests\RoleUpdateRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 
@@ -46,11 +48,15 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleCreateRequest $request)
     {
         try{
-            Role::create($request->only('name','description'));
-            return redirect()->route("role.index")->with("success","Cargo criado com sucesso!");
+            $role = Role::create($request->only('name','description'));
+
+            //tratar request permissions e criar
+            $role->attach_permissions($request->get('permissions'));
+            
+            return redirect()->route("role.index")->with("success","Função criado com sucesso!");
         } catch(Exception $error){
             return redirect()->route("role.index")->with("error",$error->getMessage());
         }
@@ -96,7 +102,7 @@ class RoleController extends Controller
         try{
             $role->fill($request->only('name','description'));
             $role->save();
-            return redirect()->route("role.index")->with("success","Cargo atualizada com sucesso!");
+            return redirect()->route("role.index")->with("success","Função atualizada com sucesso!");
         } catch(Exception $error){
             return redirect()->route("role.index")->with("error",$error->getMessage());
         }
@@ -112,7 +118,7 @@ class RoleController extends Controller
     {
         try{
             $role->delete();
-            return redirect()->route('role.index')->with('success','Cargo deletada com sucesso!');
+            return redirect()->route('role.index')->with('success','Função deletada com sucesso!');
         }catch(Exception $error){
             return redirect()->route('role.index')->with('error',$error->getMessage());
         }
