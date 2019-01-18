@@ -28,7 +28,7 @@
 <div class="panel panel-profile">
     <div class="clearfix">
         <!-- LEFT COLUMN -->
-        {!! Form::open(["route" => "profile.store", "method" => "post", "class" => "profile", "file" => true/*"enctype" => "multipart/form-data"*/]) !!}
+        {!! Form::open(["route" => "profile.store", "method" => "post", "class" => "profile", "enctype" => "multipart/form-data"]) !!}
             <!-- PROFILE HEADER -->
             <div class="profile-header">
                 <div class="overlay"></div>
