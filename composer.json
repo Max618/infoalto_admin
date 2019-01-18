@@ -9,13 +9,12 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "illuminate/support": "5.7.*",
         "laravelcollective/html": "5.7.*"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "infoalto\\admin\\MainServiceProvider"
+                "Infoalto\\Admin\\MainServiceProvider"
             ]
         }
     },
