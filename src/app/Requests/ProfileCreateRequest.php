@@ -25,8 +25,9 @@ class ProfileCreateRequest extends FormRequest
     {
         return [
             "birthday" => "required|date",
-            "phone" => "required|numeric|max:11",
-            "about" => "nullable"
+            "phone" => "required|numeric",
+            "about" => "nullable",
+            "profile_image" => "required|image"
         ];
     }
 
@@ -36,7 +37,8 @@ class ProfileCreateRequest extends FormRequest
             "birthday.date" => "O campo data de nacimento é deve ser uma data",
             "phone.required" => "O campo celular é obrigatório",
             "phone.numeric" => "O campo celular deve ser numérico",
-            "phone.numeric" => "O campo celular deve ter no máximo 11 digitos"
+            "profile_image.image" => "O campo imagem deve ter os seguintes formatos: jpeg, png, bmp, gif, svg",
+            "profile_image.required" => "O campo imagem é obrigatório"
         ];
     }
 }
