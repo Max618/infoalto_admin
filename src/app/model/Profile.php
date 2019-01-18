@@ -30,6 +30,6 @@ class Profile extends Model
     }
 
     public function image(){
-        return $this->morphOne('Infoalto\Admin', 'imageable');
+        return $this->morphOne('Infoalto\Admin\Image', 'imageable');
     }
 }
