@@ -13,6 +13,6 @@ class Image extends Model
     }
 
     public function getImageAttribute(){
-        return $this["attributes"]->directory.$this["attributes"]->name;
+        return $this->attributes["directory"].$this->attributes["name"];
     }
 }
