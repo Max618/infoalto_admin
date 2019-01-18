@@ -5,20 +5,39 @@
     .editar li {
         padding-bottom: 10px;
     }
+    .profile-header .profile-main {
+        background-image: url("{{ asset('admin/img/profile-bg.png') }}");
+        background-size: 1050px 265px;
+    }
+    .rounded {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+    .image {
+        background-image: url('{{ asset("admin/img/default-user-image.png") }}');
+    }
 </style>
 @endsection
 @section('content')
 <div class="panel panel-profile">
     <div class="clearfix">
         <!-- LEFT COLUMN -->
-        <div class="profile">
+        {!! Form::open(["route" => "profile.store", "method" => "post", "class" => "profile", "file" => true/*"enctype" => "multipart/form-data"*/]) !!}
             <!-- PROFILE HEADER -->
             <div class="profile-header">
                 <div class="overlay"></div>
                 <div class="profile-main">
-                    <img src="assets/img/user-medium.png" class="img-circle" alt="Avatar">
+                    <div class="rounded image"></div>
                     <h3 class="name">{{ auth()->user()->name }}</h3>
-                    <span class="online-status status-available">Available</span>
+                    <div class="text-center">
+                    {!! Form::file("profile_image",["class" => "form-control"]) !!}
+                    </div>
                 </div>
                 <div class="profile-stat">
                     <div class="row">
@@ -36,7 +55,7 @@
             </div>
             <!-- END PROFILE HEADER -->
             <!-- PROFILE DETAIL -->
-            {!! Form::open(["route" => "profile.store", "method" => "post", "class" => "profile-detail"]) !!}
+            <div class="profile-detail">
                 <div class="profile-info">
                     <h4 class="heading">Informações básicas</h4>
                     <ul class="list-unstyled list-justify editar">
@@ -61,9 +80,9 @@
                 <div class="text-center">
                     {!! Form::submit("Salvar", ["class" => "btn btn-primary"]) !!}
                 </div>
-            {!! Form::close() !!}
+            </div>                
             <!-- END PROFILE DETAIL -->
-        </div>
+        {!! Form::close() !!}
     </div>
 </div>
 @endsection
