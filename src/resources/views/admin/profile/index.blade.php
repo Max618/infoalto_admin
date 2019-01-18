@@ -4,7 +4,20 @@
 <style>
     .profile-header .profile-main {
         background-image: url("{{ asset('admin/img/profile-bg.png') }}");
-        background-size: 1050px 225px;
+        background-size: 1050px 230px;
+    }
+    .rounded {
+        display: inline-block;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+    }
+    .image {
+        background-image: url('{{ asset(auth()->user()->profile->image->image) }}');
     }
 </style>
 @endsection
@@ -17,7 +30,7 @@
             <div class="profile-header">
                 <div class="overlay"></div>
                 <div class="profile-main">
-                    <img src="{{ asset('admin/img/user-medium.png') }}" class="img-circle" alt="Avatar">
+                    <div class="rounded image"></div>
                     <h3 class="name">{{ auth()->user()->name }}</h3>
                 </div>
                 <div class="profile-stat">
