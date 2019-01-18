@@ -1,5 +1,7 @@
 @extends('layout.dashboard')
 
+@section("title", "Criar Usuário")
+
 @section('content')
 <h3 class="page-title">Criar Usuário</h3>
 <div class="row">

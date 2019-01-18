@@ -1,5 +1,7 @@
 @extends('layout.dashboard')
 
+@section("title", "Editar Função")
+
 @section('content')
 <h3 class="page-title">Editar Função</h3>
 <div class="row">

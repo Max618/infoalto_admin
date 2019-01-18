@@ -1,5 +1,7 @@
 @extends('layout.dashboard')
 
+@section("title", "Criar Perfil")
+
 @section("css")
 <style>
     .editar li {

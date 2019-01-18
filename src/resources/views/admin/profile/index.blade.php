@@ -1,5 +1,7 @@
 @extends('layout.dashboard')
 
+@section("title", "Meu Perfil")
+
 @section("css")
 <style>
     .profile-header .profile-main {
