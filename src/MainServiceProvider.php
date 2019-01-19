@@ -27,7 +27,7 @@ class MainServiceProvider extends ServiceProvider
         //MAIN PUBLISH
         $this->publishes([
             __DIR__.'/assets' => base_path('public/admin/'),
-            __DIR__.'/resources/views/admin' => base_path('resources/views/admin/'),
+            //__DIR__.'/resources/views/admin' => base_path('resources/views/admin/'),
             __DIR__.'/resources/views/auth' => base_path('resources/views/auth/'),
             __DIR__.'/resources/views/layout' => base_path('resources/views/layout/'),
             __DIR__.'/AuthServiceProvider.php' => base_path('app/Providers/AuthServiceProvider.php'),
@@ -70,8 +70,8 @@ class MainServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //$this->app->make('infoalto\admin\controllers\UserController');
-        //$this->app->make('infoalto\admin\PermissionController');
+        $this->app->make('Infoalto\Admin\Controllers\UserController');
+        $this->app->make('Infoalto\Admin\Controllers\PermissionController');
         $this->app->make('Infoalto\Admin\Requests\UserCreateRequest');
         $this->app->make('Infoalto\Admin\Requests\UserUpdateRequest');
     }
