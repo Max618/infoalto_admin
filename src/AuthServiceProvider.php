@@ -5,7 +5,6 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Infoalto\Admin\Permission;
-//use App\User;
 
 class AuthServiceProvider extends ServiceProvider
 {
