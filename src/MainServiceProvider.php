@@ -31,7 +31,8 @@ class MainServiceProvider extends ServiceProvider
             __DIR__.'/resources/views/auth' => base_path('resources/views/auth/'),
             __DIR__.'/resources/views/layout' => base_path('resources/views/layout/'),
             __DIR__.'/AuthServiceProvider.php' => base_path('app/Providers/AuthServiceProvider.php'),
-            __DIR__.'/database/seeds' => base_path('database/seeds/')
+            __DIR__.'/database/seeds' => base_path('database/seeds/'),
+            __DIR__.'web.php' => base_path('routes')
         ],"admin");
 
         //VIEWS PUBLISH
