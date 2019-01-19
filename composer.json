@@ -29,6 +29,9 @@
         ],
         "admin-basic": [
             "php artisan vendor:publish --tag=admin --force"
+        ],
+        "admin-dump": [
+            "composer dump-autoload"
         ]
     }
 }
