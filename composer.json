@@ -22,5 +22,13 @@
         "psr-4": {
             "Infoalto\\Admin\\": "src/"
         }
+    },
+    "scripts": {
+        "admin-storage": [
+            "php artisan storage:link"
+        ],
+        "admin-basic": [
+            "php artisan vendor:publish --tag=admin --force"
+        ]
     }
 }
