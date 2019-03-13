@@ -41,6 +41,16 @@ class ProfileController extends Controller
         try{
             $user = auth()->user();
             $user->profile()->create($request->only('birthday','phone','about'));
+
+            $name_image = $user->id."-profile.".$request->file("profile_image")->extension();
+            // dd($user->profile->image);
+            // $user->profile->image->uploadImage($request->file('profile_image','profiles',$name_image));
+            // $user->profile->image()->create([
+            //     "title" => "Imagem de perfil de $user->name",
+            //     "directory" => $directory_image,
+            //     "name" => $name_image
+            // ]);
+
             $this->imageProfileUpload($request);
             return redirect()->route("profile.index")->with("success","Informações atualizado com sucesso!");
         } catch(Exception $error){
