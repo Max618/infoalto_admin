@@ -71,7 +71,6 @@ class MainServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->make('Infoalto\Admin\Controllers\UserController');
-        $this->app->make('Infoalto\Admin\Controllers\PermissionController');
         $this->app->make('Infoalto\Admin\Requests\UserCreateRequest');
         $this->app->make('Infoalto\Admin\Requests\UserUpdateRequest');
     }
