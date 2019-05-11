@@ -21,7 +21,8 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('admin/img/apple-icon.png') }}">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{ asset('admin/img/favicon.png') }}">
 	<!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('admin/datatables/dataTables.bootstrap4.css') }}">
+	<link rel="stylesheet" href="{{ asset('admin/datatables/dataTables.bootstrap4.css') }}">
+	<link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
 	@yield('css')
 </head>
 
@@ -93,6 +94,7 @@
 	<!-- DataTables -->
 	<script src="{{ asset('admin/datatables/jquery.dataTables.js') }}"></script>
 	<script src="{{ asset('admin/datatables/dataTables.bootstrap4.js') }}"></script>
+	<script src="{{ asset('admin/scripts/custom.js') }}"></script>
 	@yield('script')
 </body>
 

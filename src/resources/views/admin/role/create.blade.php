@@ -2,18 +2,6 @@
 
 @section("title", "Criar Função")
 
-@section('css')
-    <style>
-        #hr-permissions {
-            display: none;
-        }
-        @media(max-width: 991px) {
-            #permissions #hr-permissions {
-                display: block;
-            }
-        }
-    </style>
-@endsection
 @section('content')
 <h3 class="page-title">Criar Função</h3>
 <div class="row">
@@ -35,10 +23,22 @@
                             <input id="allModels" type="checkbox"/> Todos Itens
                         </div>
                         @foreach ($modelNames as $model)
-                            <div class="row itens-with-tooltip">
-                                <input class="modelIten" type="checkbox" name="model[]" value="{{ $model }}"> <span>{{ __($model) }}</span>
+                        <div class="row tooltip-box">
+                            <div>
+                                <input type="checkbox" class="modelIten" name="model[]" value="{{ $model }}" id=""/><a id="text-iten-{{ $model }}" class="text-iten"> {{ __($model) }} </a>
                             </div>
-                        @endforeach                        
+                            <div class="tooltip-itens" id="tooltip-itens-{{ $model }}">
+                                <div class="iten">
+                                    Opções do {{ __($model) }}
+                                </div>
+                                @foreach ($options as $option)
+                                    <div class="row">
+                                        <input class="optionIten" type="checkbox" name="options[]" value="{{ $option }}"> {{ __($option) }}
+                                    </div>
+                                @endforeach            
+                            </div>
+                        </div>
+                        @endforeach                       
                     </div>
                     <hr id="hr-permissions">
                     <div class="col-md-6">
@@ -47,7 +47,7 @@
                         </div>
                         @foreach ($options as $option)
                             <div class="row">
-                                <input class="optionIten" type="checkbox" name="options[]" value="{{ $option }}"> {{ __($option) }}
+                                <input class="optionIten mainOptions" type="checkbox" value="{{ $option }}"> {{ __($option) }}
                             </div>
                         @endforeach 
                     </div>
@@ -66,21 +66,6 @@
 @endsection
 @section('script')
 <script>
-    const modelItens = "modelIten"
-    const optionsItens = "optionIten"
-    const changeIten = iten => iten.checked = !iten.checked
-
-    const changeItens = classItens => {
-        return () => {
-            let itens = document.getElementsByClassName(classItens)
-            Array.from(itens).forEach(changeIten)
-        }
-    }
-
-    const allModels = document.getElementById("allModels")
-    allModels.addEventListener("change", changeItens(modelItens))
-
-    const allOptions = document.getElementById("allOptions")
-    allOptions.addEventListener("change", changeItens(optionsItens))
+    doTooltipFunction()
 </script>
 @endsection
