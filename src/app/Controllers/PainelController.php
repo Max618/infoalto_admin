@@ -4,6 +4,7 @@ namespace Infoalto\Admin\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
 
 class PainelController extends Controller
 {
@@ -24,6 +25,9 @@ class PainelController extends Controller
      */
     public function index()
     {
-        return view('admin.painel');
+        if(View::exists("admin.painel"))
+            return View("admin.painel");
+
+        return view('admin::admin.painel');
     }
 }
