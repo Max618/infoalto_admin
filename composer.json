@@ -23,7 +23,7 @@
     },
     "autoload": {
         "files": [
-            "src/helpers.php"
+            "src/Helpers.php"
         ],
         "psr-4": {
             "Infoalto\\Admin\\": "src/"

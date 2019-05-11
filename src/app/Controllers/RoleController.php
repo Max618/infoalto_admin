@@ -40,10 +40,13 @@ class RoleController extends Controller
     {
         $this->authorize('create_role');
 
-        if(View::exists("admin.role.create"))
-            return View("admin.role.create");
+        $modelNames = \Infoalto\Admin\Helpers::getModels();
+        $options = ['create','update','view','delete'];
 
-        return View("admin::admin.role.create");
+        if(View::exists("admin.role.create"))
+            return View("admin.role.create", ['modelNames' => $modelNames, 'options' => $options]);
+
+        return View("admin::admin.role.create", ['modelNames' => $modelNames, 'options' => $options]);
     }
 
     /**
@@ -55,6 +58,8 @@ class RoleController extends Controller
     public function store(RoleCreateRequest $request)
     {
         $this->authorize('create_role');
+
+        dd($request);
 
         try{
             $role = Role::create($request->only('name','description'));
