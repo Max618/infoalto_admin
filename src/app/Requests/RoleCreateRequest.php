@@ -25,7 +25,9 @@ class RoleCreateRequest extends FormRequest
     {
         return [
             "name" => "required|unique:roles|max:255",
-            "description" => "required"
+            "description" => "required",
+            "model" => "required",
+            "options" => "required"
         ];
     }
 
@@ -34,7 +36,9 @@ class RoleCreateRequest extends FormRequest
             "name.required" => "O campo é nome é obrigatório",
             "name.max" => "O campo nome passou do limite máximo de caracteres",
             "name.unique" => "O valor do nome já existe",
-            "description.required" => "O campo descrição é obrigatório"
+            "description.required" => "O campo descrição é obrigatório",
+            "model.required" => "Deve ser escolhido pelo menos um item",
+            "options.required" => "Deve ser escolhido pelo menos uma permissão"
         ];
     }
 }

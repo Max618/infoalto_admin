@@ -26,7 +26,8 @@ class RoleUpdateRequest extends FormRequest
         return [
             "name" => "required|max:255",
             "description" => "required",
-            "permissions" => "required"
+            "model" => "required",
+            "options" => "required"
         ];
     }
 
@@ -35,7 +36,8 @@ class RoleUpdateRequest extends FormRequest
             "name.required" => "O campo é nome é obrigatório",
             "name.max" => "O campo nome passou do limite máximo de caracteres",
             "description.required" => "O campo descrição é obrigatório",
-            "permissions.required" => "O campo permissões é ogrigatório",
+            "model.required" => "Deve ser escolhido pelo menos um item",
+            "options.required" => "Deve ser escolhido pelo menos uma permissão"
         ];
     }
 }
