@@ -22,7 +22,7 @@
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
-                            <th>Funções</th>
+                            <th>Função</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
