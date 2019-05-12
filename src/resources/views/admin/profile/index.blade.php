@@ -8,16 +8,6 @@
         background-image: url("{{ asset('admin/img/profile-bg.png') }}");
         background-size: 1050px 230px;
     }
-    .rounded {
-        display: inline-block;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-    }
     .image {
         background-image: url('{{ asset(auth()->user()->profile->image->image) }}');
     }
