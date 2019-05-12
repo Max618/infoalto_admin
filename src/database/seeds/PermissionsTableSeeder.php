@@ -14,16 +14,16 @@ class PermissionsTableSeeder extends Seeder
     {
         //PERMISSOES USUARIOS
         $create = Permission::create([
-            'name' => 'create_user',
+            'name' => 'user_create',
         ]);
         $edit = Permission::create([
-            'name' => 'edit_user',
+            'name' => 'user_edit',
         ]);
         $delete = Permission::create([
-            'name' => 'delete_user',
+            'name' => 'user_delete',
         ]);
         $view = Permission::create([
-            'name' => 'view_user',
+            'name' => 'user_view',
         ]);
         $create->roles()->attach(1);
         $edit->roles()->attach(1);
@@ -32,16 +32,16 @@ class PermissionsTableSeeder extends Seeder
 
         //PERMISSOES ROLES
         $create = Permission::create([
-            'name' => 'create_role',
+            'name' => 'role_create',
         ]);
         $edit = Permission::create([
-            'name' => 'edit_role',
+            'name' => 'role_edit',
         ]);
         $delete = Permission::create([
-            'name' => 'delete_role',
+            'name' => 'role_delete',
         ]);
         $view = Permission::create([
-            'name' => 'view_role',
+            'name' => 'role_view',
         ]);
         $create->roles()->attach(1);
         $edit->roles()->attach(1);
@@ -51,16 +51,16 @@ class PermissionsTableSeeder extends Seeder
         
         //PERMISSOES PERMISSIONS
         $create = Permission::create([
-            'name' => 'create_permission',
+            'name' => 'permission_create',
         ]);
         $edit = Permission::create([
-            'name' => 'edit_permission',
+            'name' => 'permission_edit',
         ]);
         $delete = Permission::create([
-            'name' => 'delete_permission',
+            'name' => 'permission_delete',
         ]);
         $view = Permission::create([
-            'name' => 'view_permission',
+            'name' => 'permission_view',
         ]);
         $create->roles()->attach(1);
         $edit->roles()->attach(1);
