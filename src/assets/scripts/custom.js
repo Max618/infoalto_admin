@@ -30,13 +30,13 @@ const doTooltipFunction = () => {
             const self = event.target
             if(self.checked){
                 Array.from(allOptions).forEach(option => {
-                    if(option.defaultValue == self.defaultValue)
+                    if(option.defaultValue.split("_")[1] == self.defaultValue)
                         option.checked = true
                 })
             }
             else {
                 Array.from(allOptions).forEach(option => {
-                    if(option.defaultValue == self.defaultValue)
+                    if(option.defaultValue.split("_")[1] == self.defaultValue)
                         option.checked = false
                 })
             }
