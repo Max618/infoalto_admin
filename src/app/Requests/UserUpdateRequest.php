@@ -14,7 +14,7 @@ class UserUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('edit_user');
+        return $this->user()->can('user_create');
     }
 
     /**

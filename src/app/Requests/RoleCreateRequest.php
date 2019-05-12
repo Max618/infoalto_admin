@@ -13,7 +13,7 @@ class RoleCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('create_role') && $this->user()->can('create_permission');
+        return $this->user()->can('role_create');
     }
 
     /**
@@ -26,7 +26,8 @@ class RoleCreateRequest extends FormRequest
         return [
             "name" => "required|unique:roles|max:255",
             "description" => "required",
-            "permissions" => "required"
+            "model" => "required",
+            "options" => "required"
         ];
     }
 
@@ -36,7 +37,8 @@ class RoleCreateRequest extends FormRequest
             "name.max" => "O campo nome passou do limite máximo de caracteres",
             "name.unique" => "O valor do nome já existe",
             "description.required" => "O campo descrição é obrigatório",
-            "permissions.required" => "O campo permissões é ogrigatório",
+            "model.required" => "Deve ser escolhido pelo menos um item",
+            "options.required" => "Deve ser escolhido pelo menos uma permissão"
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Infoalto\Admin\Permission;
+use Illuminate\Support\Facades\Schema;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,13 +26,14 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        $permissions = Permission::with('roles')->get();
-        if(!empty($permissions))
-            foreach($permissions as $permission){
-                Gate::define($permission->name, function ($user) use ($permission) {
-                    return $user->hasPermission($permission);
-                });
-            }
+        if(Schema::hasTable('permissions')){
+            $permissions = Permission::with('roles')->get();
+            if(!empty($permissions))
+                foreach($permissions as $permission){
+                    Gate::define($permission->name, function ($user) use ($permission) {
+                        return $user->hasPermission($permission);
+                    });
+                }
+        }
     }
 }

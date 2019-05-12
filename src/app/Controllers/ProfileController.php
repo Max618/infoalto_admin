@@ -41,26 +41,19 @@ class ProfileController extends Controller
         try{
             $user = auth()->user();
             $user->profile()->create($request->only('birthday','phone','about'));
-            $this->imageProfileUpload($request);
+
+            $name_image = $user->id."-profile.".$request->file("profile_image")->extension();
+            
+            $directory_image = "storage/profiles/";
+            $user->profile->image()->create([
+                "name" => $name_image,
+                "title" => "Imagem de perfil de $user->name",
+                "directory" => $directory_image,
+            ]);
+            $user->profile->image->uploadImage($request->file('profile_image'),$name_image,'profiles/', $request->file("profile_image")->extension());
             return redirect()->route("profile.index")->with("success","Informações atualizado com sucesso!");
         } catch(Exception $error){
             return redirect()->route("profile.index")->with("error",$error->getMessage());
         }
-    }
-
-    private function imageProfileUpload(ProfileCreateRequest $request){
-        $user = auth()->user();
-
-        $directory_image = "storage/profiles/";
-        $name_image = $user->id."-profile.".$request->file("profile_image")->extension();
-
-        if(!$request->file('profile_image')->storeAs("profiles/", $name_image))
-            throw new Exception("Erro ao fazer upload da imagem");
-
-        $user->profile->image()->create([
-            "title" => "Imagem de perfil de $user->name",
-            "directory" => $directory_image,
-            "name" => $name_image
-        ]);
     }
 }

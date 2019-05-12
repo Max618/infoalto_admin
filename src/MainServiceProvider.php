@@ -18,7 +18,8 @@ class MainServiceProvider extends ServiceProvider
 
         $this->app->register(HtmlServiceProvider::class);
         AliasLoader::getInstance(['Form'=>'\Collective\Html\FormFacade', "Html"=>'\Collective\Html\FormFacade']);
-
+        $this->app->register(\Intervention\Image\ImageServiceProvider::class);
+        AliasLoader::getInstance(['ImageIntervention' => '\Intervention\Image\Facades\Image']);
 
         $this->loadRoutesFrom(__DIR__.'/routes.php');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
@@ -71,8 +72,8 @@ class MainServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->make('Infoalto\Admin\Controllers\UserController');
-        $this->app->make('Infoalto\Admin\Controllers\PermissionController');
         $this->app->make('Infoalto\Admin\Requests\UserCreateRequest');
         $this->app->make('Infoalto\Admin\Requests\UserUpdateRequest');
+        //$this->app->make('app/helpers.php');
     }
 }

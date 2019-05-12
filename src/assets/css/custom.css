@@ -1,0 +1,42 @@
+.tooltip-box {
+    display: flex;
+}
+.tooltip-itens {
+    display: none;
+    flex-direction: column;
+    position:absolute;
+    margin-left: 75px;
+    background-color:slategray;
+    color:white;
+    border-radius: 20px;
+    height: 100%;
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+}
+#hr-permissions {
+    display: none;
+}
+@media(max-width: 991px) {
+    #permissions #hr-permissions {
+        display: block;
+    }
+}
+
+.rounded {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+.editar li {
+    padding-bottom: 10px;
+}
+
+#permissions {
+    margin-bottom: 25px;
+}

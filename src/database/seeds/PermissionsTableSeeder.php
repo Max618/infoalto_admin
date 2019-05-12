@@ -14,20 +14,16 @@ class PermissionsTableSeeder extends Seeder
     {
         //PERMISSOES USUARIOS
         $create = Permission::create([
-            'name' => 'create_user',
-            'description' => 'Criar novo usuário.'
+            'name' => 'user_create',
         ]);
         $edit = Permission::create([
-            'name' => 'edit_user',
-            'description' => 'Editar usuário.'
+            'name' => 'user_edit',
         ]);
         $delete = Permission::create([
-            'name' => 'delete_user',
-            'description' => 'Deletar usuário.'
+            'name' => 'user_delete',
         ]);
         $view = Permission::create([
-            'name' => 'view_user',
-            'description' => 'Visualizar informações do usuário.'
+            'name' => 'user_view',
         ]);
         $create->roles()->attach(1);
         $edit->roles()->attach(1);
@@ -36,20 +32,16 @@ class PermissionsTableSeeder extends Seeder
 
         //PERMISSOES ROLES
         $create = Permission::create([
-            'name' => 'create_role',
-            'description' => 'Criar novo cargo.'
+            'name' => 'role_create',
         ]);
         $edit = Permission::create([
-            'name' => 'edit_role',
-            'description' => 'Editar cargo.'
+            'name' => 'role_edit',
         ]);
         $delete = Permission::create([
-            'name' => 'delete_role',
-            'description' => 'Deletar cargo.'
+            'name' => 'role_delete',
         ]);
         $view = Permission::create([
-            'name' => 'view_role',
-            'description' => 'Viasualizar informações do cargo.'
+            'name' => 'role_view',
         ]);
         $create->roles()->attach(1);
         $edit->roles()->attach(1);
@@ -59,20 +51,16 @@ class PermissionsTableSeeder extends Seeder
         
         //PERMISSOES PERMISSIONS
         $create = Permission::create([
-            'name' => 'create_permission',
-            'description' => 'Criar nova permissão.'
+            'name' => 'permission_create',
         ]);
         $edit = Permission::create([
-            'name' => 'edit_permission',
-            'description' => 'Editar permissão.'
+            'name' => 'permission_edit',
         ]);
         $delete = Permission::create([
-            'name' => 'delete_permission',
-            'description' => 'Deletar permissão.'
+            'name' => 'permission_delete',
         ]);
         $view = Permission::create([
-            'name' => 'view_permission',
-            'description' => 'Viasualizar informações da permissão.'
+            'name' => 'permission_view',
         ]);
         $create->roles()->attach(1);
         $edit->roles()->attach(1);

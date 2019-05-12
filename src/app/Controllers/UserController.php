@@ -4,12 +4,12 @@ namespace Infoalto\Admin\Controllers;
 
 use Infoalto\Admin\User;
 use Infoalto\Admin\Role;
-//use Illuminate\Http\Request;
 use Infoalto\Admin\Requests\UserCreateRequest;
 use Infoalto\Admin\Requests\UserUpdateRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $this->authorize('view_user');
+        $this->authorize('user_view');
 
         $users = User::all();
         if(View::exists("admin.user.index"))
@@ -40,7 +40,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $this->authorize('create_user');
+        $this->authorize('user_create');
 
         $roles = Role::all()->pluck('name','id');
         
@@ -58,10 +58,11 @@ class UserController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        $this->authorize('create_user');
+        $this->authorize('user_create');
 
         try{
             $user = User::create($request->only('name','email','password'));
+            $user->password = Hash::make($user->password);
             $user->roles()->attach($request->get("role_id"));
             $user->save();
             return redirect()->route("user.index")->with("success","Usuário criado com sucesso!");
@@ -78,7 +79,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $this->authorize('view_user');
+        $this->authorize('user_view');
 
         if(View::exists("admin.user.show"))
             return View("admin.user.show", ['user' => $user]);
@@ -94,7 +95,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $this->authorize('edit_user');
+        $this->authorize('user_edit');
 
         $roles = Role::all()->pluck('name','id');
 
@@ -113,7 +114,7 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, User $user)
     {
-        $this->authorize('edit_user');
+        $this->authorize('user_edit');
 
         try{
             $user->fill($request->only('name','email'));
@@ -133,7 +134,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $this->authorize('delete_user');
+        $this->authorize('user_delete');
 
         try{
             $user->delete();

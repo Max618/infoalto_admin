@@ -17,9 +17,7 @@ class CreateImagesTable extends Migration
             $table->increments('id');
             $table->string("name");
             $table->string("directory");
-            $table->float("height")->nullable();
-            $table->float("width")->nullable();
-            $table->string("title");
+            $table->string("title")->nullable();
             $table->string("imageable_type");
             $table->integer("imageable_id");
             $table->timestamps();
