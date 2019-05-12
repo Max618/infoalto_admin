@@ -11,18 +11,17 @@
                 <p class="lead">Entre no sistema</p>
             </div>
             @if($errors->any())
-					@foreach($errors->all() as $error)
-						<div class="alert alert-danger alert-dismissible" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<i class="fa fa-times-circle"></i> {{ $error }}
-						</div>
-					@endforeach
-				@endif
+                @foreach($errors->all() as $error)
+                    <div class="alert alert-danger" role="alert">
+                        <i class="fa fa-times-circle"></i> {{ $error }}
+                    </div>
+                @endforeach
+            @endif
             <form class="form-auth-small" method="POST" action="{{ route('login') }}">
             @csrf
                 <div class="form-group">
                     <label for="signin-email" class="control-label sr-only">E-mail</label>
-                    <input type="email" class="form-control" id="signin-email" name="email" placeholder="E-mail">
+                    <input type="email" class="form-control" id="signin-email" name="email" placeholder="E-mail" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="signin-password" class="control-label sr-only">Senha</label>
@@ -31,7 +30,7 @@
                 <div class="form-group clearfix">
                     <label class="fancy-checkbox element-left">
                         <input type="checkbox">
-                        <span>Remember me</span>
+                        <span>Lembrar de mim</span>
                     </label>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-block">ENTRAR</button>

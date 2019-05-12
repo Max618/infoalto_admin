@@ -14,7 +14,6 @@ Route::middleware(['web'])->group( function () {
     Route::prefix('painel')->group( function () {
         Route::get('/', '\Infoalto\Admin\Controllers\PainelController@index')->name('painel');
         Route::resource('role','\Infoalto\Admin\Controllers\RoleController');
-        Route::resource('permission', '\Infoalto\Admin\Controllers\PermissionController');
         Route::resource('user', '\Infoalto\Admin\Controllers\UserController');
         Route::get("/me","\Infoalto\Admin\Controllers\ProfileController@index")->name("profile.index");
         Route::get("/me/create","\Infoalto\Admin\Controllers\ProfileController@create")->name("profile.create");
