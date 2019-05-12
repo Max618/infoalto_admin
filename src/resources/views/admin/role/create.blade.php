@@ -33,7 +33,7 @@
                                 </div>
                                 @foreach ($options as $option)
                                     <div class="row">
-                                        <input class="optionIten" type="checkbox" name="options[]" value="{{ $option }}"> {{ __($option) }}
+                                        <input class="optionIten" type="checkbox" name="options[]" value="{{ $model."_".$option }}"> {{ __($option) }}
                                     </div>
                                 @endforeach            
                             </div>
