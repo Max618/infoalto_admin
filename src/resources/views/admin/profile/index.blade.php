@@ -25,7 +25,7 @@
                     <div class="rounded image"></div>
                     <h3 class="name">{{ auth()->user()->name }}</h3>
                 </div>
-                <div class="profile-stat">
+                {{-- <div class="profile-stat">
                     <div class="row">
                         <div class="col-md-4 stat-item">
                             45 <span>Projects</span>
@@ -37,7 +37,7 @@
                             2174 <span>Points</span>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!-- END PROFILE HEADER -->
             <!-- PROFILE DETAIL -->
@@ -50,7 +50,7 @@
                         <li>E-mail <span>{{ auth()->user()->email }}</span></li>
                     </ul>
                 </div>
-                <div class="profile-info">
+                {{-- <div class="profile-info">
                     <h4 class="heading">Social</h4>
                     <ul class="list-inline social-icons">
                         <li><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
@@ -58,7 +58,7 @@
                         <li><a href="#" class="google-plus-bg"><i class="fa fa-google-plus"></i></a></li>
                         <li><a href="#" class="github-bg"><i class="fa fa-github"></i></a></li>
                     </ul>
-                </div>
+                </div> --}}
                 <div class="profile-info">
                     <h4 class="heading">Bio</h4>
                     <p>{{ $profile->about }}</p>
