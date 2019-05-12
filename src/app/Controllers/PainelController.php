@@ -25,7 +25,6 @@ class PainelController extends Controller
      */
     public function index()
     {
-        //dd(auth()->user()->roles[0]->permissions);
         if(View::exists("admin.painel"))
             return View("admin.painel");
 

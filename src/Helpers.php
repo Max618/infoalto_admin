@@ -4,6 +4,7 @@ namespace Infoalto\Admin;
 
 use Illuminate\Container\Container;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Request;
 
 class Helpers {
     public static function getModels($modelNamespace = 'Infoalto\\Admin') {
@@ -16,5 +17,10 @@ class Helpers {
         })->filter();
 
         return $models;
+    }
+    public static function isActive($url = 'painel') {
+        if($url == 'painel')
+            return Request::is("painel") ? 'active' : '';
+        return Request::is("painel/".$url."*") ? 'active' : '';
     }
 }
