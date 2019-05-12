@@ -11,9 +11,13 @@ use Illuminate\Support\Facades\View;
 
 class RoleController extends Controller
 {
+    private $options;
+    private $modelNames;
     public function __construct()
     {
         $this->middleware('auth');
+        $this->options = ['create','edit','view','delete'];
+        $this->modelNames = \Infoalto\Admin\Helpers::getModels();
     }
     /**
      * Display a listing of the resource.
@@ -40,13 +44,10 @@ class RoleController extends Controller
     {
         $this->authorize('create_role');
 
-        $modelNames = \Infoalto\Admin\Helpers::getModels();
-        $options = ['create','update','view','delete'];
-
         if(View::exists("admin.role.create"))
-            return View("admin.role.create", ['modelNames' => $modelNames, 'options' => $options]);
+            return View("admin.role.create", ['modelNames' => $this->modelNames, 'options' => $this->options]);
 
-        return View("admin::admin.role.create", ['modelNames' => $modelNames, 'options' => $options]);
+        return View("admin::admin.role.create", ['modelNames' => $this->modelNames, 'options' => $this->options]);
     }
 
     /**
@@ -59,13 +60,14 @@ class RoleController extends Controller
     {
         $this->authorize('create_role');
 
-        dd($request);
 
         try{
             $role = Role::create($request->only('name','description'));
 
             //tratar request permissions e criar
-            $role->attach_permissions($request->get('permissions'));
+            $options = collect($request->get('options'));
+            $model = collect($request->get('model'));
+            $role->attach_permissions($options, $model);
             
             return redirect()->route("role.index")->with("success","Função criado com sucesso!");
         } catch(Exception $error){
@@ -98,11 +100,15 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $this->authorize('edit_role');
+        $rolePermissions = collect(explode("/",$role->permissions));
+        $modelPermissions = $rolePermissions->map(function ($item) {
+            return explode("_",$item);
+        });
 
         if(View::exists("admin.role.edit"))
-            return View("admin.role.edit",["role" => $role]);
+            return View("admin.role.edit",["role" => $role,'modelNames' => $this->modelNames, 'options' => $this->options,'rolePermissions' => $rolePermissions,'modelPermissions' => $modelPermissions]);
 
-        return View("admin::admin.role.edit",["role" => $role]);
+        return View("admin::admin.role.edit",["role" => $role,'modelNames' => $this->modelNames, 'options' => $this->options, 'rolePermissions' => $rolePermissions, 'modelPermissions' => $modelPermissions]);
     }
 
     /**
@@ -119,7 +125,10 @@ class RoleController extends Controller
         try{
             $role->fill($request->only('name','description'));
             $role->permissions()->detach();
-            $role->attach_permissions($request->get('permissions'));
+            //tratar request permissions e criar
+            $options = collect($request->get('options'));
+            $model = collect($request->get('model'));
+            $role->attach_permissions($options, $model);
             $role->save();
             return redirect()->route("role.index")->with("success","Função atualizada com sucesso!");
         } catch(Exception $error){
