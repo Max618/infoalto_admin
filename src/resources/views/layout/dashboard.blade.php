@@ -79,7 +79,7 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
+				<p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved. Adaptado por <a href="https://www.infoalto.com.br" target="_blank">InfoAlto</a>.</p>
 			</div>
 		</footer>
 	</div>

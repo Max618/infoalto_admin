@@ -8,6 +8,7 @@
         </div>
         <div id="navbar-menu">
             <ul class="nav navbar-nav navbar-right">
+                {{--
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
                         <i class="lnr lnr-alarm"></i>
@@ -19,9 +20,10 @@
                         <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
                         <li><a href="#" class="more">See all notifications</a></li>
                     </ul>
-                </li>
+                </li> 
+                --}}
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset('admin/img/user.png') }}" class="img-circle" alt="Avatar"> <span>{{ Auth::user()->name }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="{{ asset(auth()->user()->profile ? auth()->user()->profile->image->smallImage : 'admin/img/default-user-image.png') }}" class="img-circle" alt="Avatar"> <span>{{ Auth::user()->name }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('profile.index') }}"><i class="lnr lnr-user"></i> <span>Meu Perfil</span></a></li>
                         <li><a onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="lnr lnr-exit"></i> <span>Sair</span></a></li>
