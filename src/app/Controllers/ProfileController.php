@@ -4,14 +4,17 @@ namespace Infoalto\Admin\Controllers;
 
 use Infoalto\Admin\Profile;
 use Infoalto\Admin\Requests\ProfileCreateRequest;
+use Infoalto\Admin\Requests\ProfileUpdateRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 
 class ProfileController extends Controller
 {
+    private $directory_image;
     public function __construct()
     {
         $this->middleware('auth');
+        $this->directory_image = "storage/profiles/";
     }
 
     /**
@@ -44,14 +47,38 @@ class ProfileController extends Controller
 
             $name_image = $user->id."-profile.".$request->file("profile_image")->extension();
             
-            $directory_image = "storage/profiles/";
             $user->profile->image()->create([
                 "name" => $name_image,
                 "title" => "Imagem de perfil de $user->name",
-                "directory" => $directory_image,
+                "directory" => $this->directory_image,
             ]);
             $user->profile->image->uploadImage($request->file('profile_image'),$name_image,'profiles/', $request->file("profile_image")->extension());
-            return redirect()->route("profile.index")->with("success","Informações atualizado com sucesso!");
+            return redirect()->route("profile.index")->with("success","Perfil criado com sucesso!");
+        } catch(Exception $error){
+            return redirect()->route("profile.index")->with("error",$error->getMessage());
+        }
+    }
+
+    public function edit(){
+        $profile = auth()->user()->profile;
+        if(View::exists("admin.profile.edit"))
+            return View("admin.profile.edit", ['profile' => $profile]);
+
+        return View("admin::admin.profile.edit", ['profile' => $profile]);
+    }
+
+    public function update(ProfileUpdateRequest $request) {
+        try {
+            $profile = auth()->user()->profile;
+            $profile->fill($request->only('name','birthday','phone','about'));
+            if($request->hasFile('profile_image')){
+                $name_image = auth()->id()."-profile.".$request->file("profile_image")->extension();
+                $profile->image->name = $name_image;
+                $profile->image->uploadImage($request->file('profile_image'),$name_image,'profiles/', $request->file("profile_image")->extension());
+                $profile->image->save();
+            }
+            $profile->save();
+            return redirect()->route("profile.index")->with("success","Perfil atualizado com sucesso!");
         } catch(Exception $error){
             return redirect()->route("profile.index")->with("error",$error->getMessage());
         }
