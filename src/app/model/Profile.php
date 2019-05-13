@@ -25,6 +25,14 @@ class Profile extends Model
         return $novo;
     }
 
+    public function getPhoneNormalAttribute(){
+        return $this->attributes["phone"];
+    }
+
+    public function getBirthdayNormalAttribute(){
+        return $this->attributes["birthday"];
+    }
+
     public function user(){
         return $this->hasOne("App\User");
     }
