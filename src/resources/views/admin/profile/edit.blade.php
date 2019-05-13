@@ -43,7 +43,7 @@
                 </div> --}}
             </div>
             <!-- END PROFILE HEADER -->
-            <!-- PROFILE DETAIL -->
+            <!-- PROFILE EDIT -->
             <div class="profile-detail">
                 <div class="profile-info">
                     <h4 class="heading">Informações básicas</h4>
@@ -71,7 +71,7 @@
                     {!! Form::submit("Salvar", ["class" => "btn btn-primary"]) !!}
                 </div>
             </div>                
-            <!-- END PROFILE DETAIL -->
+            <!-- END PROFILE EDIT -->
         {!! Form::close() !!}
     </div>
 </div>
