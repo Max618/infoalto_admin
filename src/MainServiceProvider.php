@@ -32,7 +32,7 @@ class MainServiceProvider extends ServiceProvider
             __DIR__.'/resources/views/layout' => base_path('resources/views/layout/'),
             __DIR__.'/AuthServiceProvider.php' => base_path('app/Providers/AuthServiceProvider.php'),
             __DIR__.'/database/seeds' => base_path('database/seeds/'),
-            __DIR__.'web.php' => base_path('routes/web.php'),
+            __DIR__.'/web.php' => base_path('routes/web.php'),
             __DIR__.'/app/model' => base_path('app/')
         ],"admin");
 
