@@ -2,7 +2,7 @@
 
 namespace Infoalto\Admin\Controllers;
 
-use Infoalto\Admin\User;
+use App\User;
 use Infoalto\Admin\Role;
 use Infoalto\Admin\Requests\UserCreateRequest;
 use Infoalto\Admin\Requests\UserUpdateRequest;
